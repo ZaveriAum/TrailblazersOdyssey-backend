@@ -3,8 +3,10 @@ const mongoose = require('mongoose')
 const app = express()
 const pointRoutes = require('./routes/pointRoutes')
 const SERVER_PORT = process.env.SERVER_PORT || 5000
+const cors = require('cors');
 require('dotenv').config()
 
+app.use(cors())
 // home route
 app.get('/', (req, res) => {
     res.send("Group Assignment")

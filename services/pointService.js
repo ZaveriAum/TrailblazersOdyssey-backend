@@ -13,14 +13,14 @@ const getPoints = async ()=>{
 }
 
 const createPoint = async (pointData) => {
-    let {name, address, task, tags, location} = pointData;
+    let {name, address, task, tags, difficulty} = pointData;
     
     let new_point = Point({
         name: name,
         address: address,
         task: task,
         tags: tags,
-        location: location
+        difficulty: difficulty,
     })
     return await new_point.save();
 }
