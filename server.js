@@ -2,6 +2,7 @@ const express = require('express')
 const mongoose = require('mongoose')
 const app = express()
 const pointRoutes = require('./routes/pointRoutes')
+const teamRoutes = require('./routes/teamRoutes')
 const SERVER_PORT = process.env.SERVER_PORT || 5000
 const cors = require('cors');
 require('dotenv').config()
@@ -13,6 +14,7 @@ app.get('/', (req, res) => {
 })
 
 app.use('/api/v1', pointRoutes)
+app.use('/api/v1', teamRoutes)
 
 // Connecting to the mongo db 
 mongoose.connect(process.env.MONGODB_CONNECTION_STRING)
