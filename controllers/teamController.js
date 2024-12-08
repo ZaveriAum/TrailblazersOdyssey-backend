@@ -59,10 +59,31 @@ const updateMember = async (req, res) =>{
         });
     }
 }
+const deleteMember = async (req, res) => {
+    try {
+        const member = await service.deleteMember(req.params.id);
+        if (!member) {
+            return res.status(404).json({
+                status: false,
+                message: "Member not found"
+            });
+        }
+        res.status(200).json({
+            status: true,
+            message: "Member deleted successfully",
+        });
+    } catch (e) {
+        res.status(400).json({
+            status: false,
+            message: e.message,
+        });
+    }
+};
 
 module.exports = {
     getMember,
     getTeam,
     createMember,
-    updateMember
+    updateMember,
+    deleteMember
 }

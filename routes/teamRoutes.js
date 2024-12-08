@@ -12,5 +12,6 @@ router.get('/team', controller.getTeam)
 router.post('/team', controller.createMember)
 
 router.put('/team/:id', controller.updateMember)
-
+router.put('/team/:id', controller.updateMember)
+router.delete('/team/:id', controller.deleteMember);
 module.exports = router;
