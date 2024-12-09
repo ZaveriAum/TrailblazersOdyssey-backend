@@ -13,4 +13,6 @@ router.post('/points', controller.createPoint)
 
 router.put('/points/:id', controller.updatePoint)
 
+router.delete('/points/:id', controller.deletePoint)
+
 module.exports = router;

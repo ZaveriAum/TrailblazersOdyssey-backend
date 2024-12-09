@@ -38,6 +38,7 @@ const createPoint = async (req, res)=>{
             point: point
         });
     }catch(e){
+        console.error(e)
         res.status(400).json({
             status: false,
             message: e.message
@@ -53,6 +54,7 @@ const updatePoint = async (req, res) =>{
             point: point
         });
     }catch(e){
+        console.error(e)
         res.status(400).json({
             status: false,
             message: e.message
@@ -60,9 +62,26 @@ const updatePoint = async (req, res) =>{
     }
 }
 
+const deletePoint = async (req, res) => {
+    try {
+      await service.deletePoint(req.params.id);
+      res.status(200).json({
+        status: true,
+        message: 'Point deleted successfully',
+      });
+    } catch (e) {
+        console.error(e)
+      res.status(400).json({
+        status: false,
+        message: e.message,
+      });
+    }
+  };
+
 module.exports = {
     getPoint,
     getPoints,
     createPoint,
-    updatePoint
+    updatePoint,
+    deletePoint
 }

@@ -26,12 +26,22 @@ const createPoint = async (pointData) => {
 }
 
 const updatePoint = async (id, pointData) => {
-    return await Point.findOneAndUpdate({_id: id}, { ...pointData }, {new:true})
-}
+    const { _id, ...updatedData } = pointData;
+
+    console.log("", updatedData); 
+    let point = await  Point.findOneAndUpdate({ _id: id }, { ...updatedData }, { new: true });
+    console.log(point)
+    return point
+  };
+
+  const deletePoint = async (id) => {
+    return await Point.findByIdAndDelete(id);
+  };
 
 module.exports = {
     getPoint,
     getPoints,
     createPoint,
-    updatePoint
+    updatePoint,
+    deletePoint
 }
